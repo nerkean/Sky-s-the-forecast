@@ -354,11 +354,34 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("geolocation-toggle").addEventListener("change", (event) => {
         if (event.target.checked) {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
+                navigator.geolocation.getCurrentPosition(async (position) => {
                     const coords = `${position.coords.latitude},${position.coords.longitude}`;
                     localStorage.setItem("geolocationEnabled", "true");
                     localStorage.setItem("geolocationCoords", coords);
-                    fetchWeather(coords);
+
+                    // Reverse geocode to get city name
+                    try {
+                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
+                        const data = await response.json();
+
+                        if (data.error) { // Добавленная проверка на ошибку
+                            throw new Error(data.error); 
+                        }
+
+                        const cityName = data.address.city || data.address.town || data.address.village || "Неизвестно";
+
+                        // Update input field with city name and fetch weather AFTER geocoding
+                        document.getElementById("city-input").value = cityName;
+                        fetchWeather(cityName);
+                    } catch (error) {
+                        console.error("Ошибка при обратном геокодировании:", error);
+                        document.getElementById("city-input").value = ''; // Очищаем поле ввода при ошибке
+                        showErrorModal("Не удалось определить город. Пожалуйста, введите название города вручную."); // Сообщение об ошибке
+                    }
+                }, (error) => {
+                    console.error("Ошибка получения геолокации:", error);
+                    document.getElementById("city-input").value = ''; // Очищаем поле ввода при ошибке
+                    showErrorModal("Не удалось получить геолокацию. Пожалуйста, введите название города вручную."); // Сообщение об ошибке
                 });
             } else {
                 alert("Геолокация не поддерживается вашим браузером.");
@@ -369,12 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+
     if (localStorage.getItem("geolocationEnabled") === "true") {
         const coords = localStorage.getItem("geolocationCoords");
         if (coords) {
-            fetchWeather(coords);
             document.getElementById("geolocation-toggle").checked = true;
-            document.getElementById("city-input").value = ''; // Очищаем поле ввода
+            // Вызываем ту же функцию, что и при изменении чекбокса, чтобы получить название города
+            document.getElementById("geolocation-toggle").dispatchEvent(new Event('change'));
         }
     } else {
         // Если геолокация отключена, пытаемся загрузить погоду из сохраненного города
@@ -384,7 +408,12 @@ document.addEventListener("DOMContentLoaded", function () {
             fetchWeather(currentCity);
         }
     }
-    
+
+    const currentCity = localStorage.getItem("currentCity");
+    if (currentCity) {
+      document.getElementById("city-input").value = currentCity;
+      fetchWeather(currentCity); // Fetch weather only if there is a stored city
+    }
 
     function showErrorModal(message) {
         document.getElementById("error-message").textContent = message;
