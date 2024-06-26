@@ -374,14 +374,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (coords) {
             fetchWeather(coords);
             document.getElementById("geolocation-toggle").checked = true;
+            document.getElementById("city-input").value = ''; // Очищаем поле ввода
+        }
+    } else {
+        // Если геолокация отключена, пытаемся загрузить погоду из сохраненного города
+        const currentCity = localStorage.getItem("currentCity");
+        if (currentCity) {
+            document.getElementById("city-input").value = currentCity;
+            fetchWeather(currentCity);
         }
     }
-
-    const currentCity = localStorage.getItem("currentCity");
-    if (currentCity) {
-      document.getElementById("city-input").value = currentCity;
-      fetchWeather(currentCity); // Fetch weather only if there is a stored city
-    }
+    
 
     function showErrorModal(message) {
         document.getElementById("error-message").textContent = message;
