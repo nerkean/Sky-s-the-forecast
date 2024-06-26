@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2093</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animate.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="gradient-bg"></div>
+    <canvas id="particles"></canvas>
+    <header>
+        <h1 class="animate__animated animate__fadeInDown">Sky's the Forecast</h1>
+    </header>
+    <main>
+        <section id="search-section" class="animate__animated animate__fadeInUp">
+            <button id="capital-button">Столицы</button> <input type="text" id="city-input" placeholder="Введите название города" autocomplete="off"> 
+            <ul id="suggestions-list" style="display: none;"></ul>
+            <p id="error-message" style="color: red;"></p>
+        </section>
+        <section id="weather-info" class="animate__animated animate__fadeInUp">
+            <h2 id="city-name">Погода в вашем городе</h2>
+            <div id="weather-main-info">
+                <p id="temperature">--°C</p>
+                <div class="weather-container">
+                    <i id="weather-icon" class="" style="font-size: 50px; display: none;"></i>
+                    <p id="weather-description"></p>
+                </div>
+            </div>
+            <button id="toggle-details" class="btn-animate">Подробнее</button>
+            <section id="weather-details" class="hidden">
+                <div class="forecast-container"></div>
+            </section>
+        </section>
+    </main>
+    <footer class="animate__animated animate__fadeInUp">
+        <button id="settings-button" class="btn-animate">⚙️ Настройки</button>
+    </footer>
+
+    <div id="settings-menu" class="hidden">
+        <h3>Настройки</h3>
+        <label>
+            <input type="checkbox" id="geolocation-toggle"> Включить геолокацию
+        </label>
+        <div id="language-switcher">
+            <button id="lang-toggle">RU</button>
+        </div>
+        <div id="unit-switcher">
+            <button id="toggle-unit">°F</button>
+        </div>
+        <button id="close-settings" class="btn-animate">Закрыть</button> 
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

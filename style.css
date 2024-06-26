@@ -1,0 +1,436 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2B0FF, #FFB6C1);
+}
+
+#gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: gradient 15s ease infinite;
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.clear-sky {
+  background: linear-gradient(135deg, #87CEEB, #FFD700);
+}
+
+.cloudy {
+  background: linear-gradient(135deg, #B0C4DE, #708090);
+}
+
+.rainy {
+  background: linear-gradient(135deg, #1c618f, #407777, #2f849e);
+}
+
+.snowy {
+  background: linear-gradient(135deg, #aba5a5, #cec0c0);
+}
+
+.drizzle {
+  background: linear-gradient(135deg, #6f6969, #a8a1a1);
+}
+
+.thunderstorm {
+  background: linear-gradient(135deg, #1E1E1E, #696969);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1em;
+  text-align: center;
+}
+
+header h1 {
+  font-family: 'Pacifico', cursive; /* Рукописный шрифт */
+  font-size: 2em; /* Еще больше увеличиваем размер */
+  color: #fff;
+  text-align: center;
+  background: -webkit-linear-gradient(45deg, #a8a899, #332a2d); /* Градиентный фон */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hueRotate 5s infinite linear; /* Анимация изменения цвета */
+}
+
+
+
+footer {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  text-align: center;
+  margin-top: auto;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#search-section {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  width: min(90%, 400px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease;
+  position: relative;
+}
+
+#language-switcher {
+  text-align: center;
+}
+
+#language-switcher button, #unit-switcher button {
+  background-color: #f44a63;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px auto;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#language-switcher button:hover, #unit-switcher button:hover {
+  background-color: #DDA0DD;
+  transform: scale(1.05);
+}
+
+#language-switcher button:active, #unit-switcher button:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+#city-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#suggestions-list li:hover {
+  background: #f5f5f5;
+}
+
+#weather-info {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  width: min(90%, 400px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease;
+}
+
+#weather-main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#city-name {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+#temperature {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#temperature .main-temp {
+  font-size: 1.5em;
+}
+
+#temperature .feels-like {
+  font-size: 0.7em;
+  color: #555;
+}
+
+#capital-button {
+  background-color: #e165e1; /* Фиолетовый, как #settings-button */
+  color: white;
+  padding: 10px 15px; /* Увеличенный внутренний отступ */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход и изменение размера */
+  animation: fadeInUp 1s ease; /* Анимация появления */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+#capital-button:hover {
+  background-color: #b427d3; /* Более темный фиолетовый при наведении */
+  transform: translateY(-2px); /* Поднимается при наведении */
+}
+
+
+#weather-description {
+  font-size: 1.5em; /* Увеличиваем размер шрифта */
+  font-weight: 500; /* Делаем шрифт немного жирнее */
+  margin-top: 10px; /* Увеличиваем отступ сверху */
+  text-transform: capitalize; /* Первая буква каждого слова заглавная */
+}
+
+#weather-icon {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 10px auto;
+}
+
+#settings-button {
+  background-color: #e165e1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  animation: fadeInUp 1s ease;
+}
+
+#settings-button:hover {
+  background-color: #b427d3;
+  transform: translateY(-2px);
+}
+
+#settings-menu {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.blur-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+#weather-details {
+  width: 100%; /* Expand to full width */
+  max-height: none; /* Remove the max-height restriction */
+  display: block; /* Ensure it's always displayed */
+  overflow-y: auto; /* Add vertical scrollbar if content overflows */
+  margin-top: 20px;
+  display: none; /* Скрываем по умолчанию */
+}
+
+#unit-switcher {
+  text-align: center;
+}
+
+#weather-details.shown {
+  display: block; /* Показываем при наличии класса .shown */
+}
+
+.forecast-container {
+  display: flex; /* Use flexbox layout */
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+  justify-content: space-between; /* Distribute items evenly */
+  gap: 20px; /* Space between items */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 10px 0; /* Optional: Add some padding for aesthetics */
+}
+
+.forecast-item {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeInUp 1s ease;
+  flex: 0 0 auto; /* Prevent items from shrinking */
+  width: 150px; /* Optional: Set a fixed width for items */
+}
+
+
+.forecast-item img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.forecast-item p {
+  margin: 5px 0;
+}
+
+#toggle-details {
+  background-color: #f4425d;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#toggle-details:hover {
+  background-color: #af4daf;
+  transform: scale(1.05);
+}
+
+#close-settings {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+#close-settings:hover {
+  background-color: #d32f2f;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #search-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #city-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Error Modal */
+#error-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation-duration: 0.5s;
+}
+
+#close-error {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#close-error:hover {
+  background-color: #d32f2f;
+}
+
+.btn-animate {
+  transition: transform 0.3s;
+}
+
+.btn-animate:hover {
+  transform: translateY(-3px);
+}
+
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
