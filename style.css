@@ -1,11 +1,11 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Dancing Script', cursive; /* Cursive font for general text */
   margin: 0;
-  color: #333;
+  color: #9370DB; /* Darker purple for better contrast */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, #E2B0FF, #FFB6C1);
+  background: linear-gradient(135deg, #F2A2E8, #E0B0FF); /* Pink to light purple gradient */
 }
 
 #gradient-bg {
@@ -71,17 +71,24 @@ header {
 }
 
 header h1 {
-  font-family: 'Pacifico', cursive; /* Рукописный шрифт */
-  font-size: 2em; /* Еще больше увеличиваем размер */
+  font-family: 'Great Vibes', cursive; /* A more glamorous cursive font */
+  font-size: 3em; /* Make the header even bigger */
   color: #fff;
   text-align: center;
-  background: -webkit-linear-gradient(45deg, #a8a899, #332a2d); /* Градиентный фон */
+  background: -webkit-linear-gradient(45deg, #962896, #FFB6C1); /* Pink to plum gradient */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: hueRotate 5s infinite linear; /* Анимация изменения цвета */
+  -webkit-text-fill-color: transparent; 
+  animation: glow 5s infinite alternate; /* New glow animation */
 }
 
-
+@keyframes glow {
+  0% {
+      text-shadow: 0 0 10px #F2A2E8; /* Pink glow */
+  }
+  100% {
+      text-shadow: 0 0 20px #E0B0FF, 0 0 10px #F2A2E8; /* Multi-color glow */
+  }
+}
 
 footer {
   background-color: rgba(255, 255, 255, 0.2);
@@ -100,7 +107,7 @@ main {
 }
 
 #search-section {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 229, 229, 0.8);
   padding: 15px;
   border-radius: 10px;
   display: flex;
@@ -115,7 +122,7 @@ main {
 }
 
 #language-switcher button, #unit-switcher button {
-  background-color: #f44a63;
+  background-color: #E0B0FF;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -131,7 +138,7 @@ main {
 }
 
 #language-switcher button:hover, #unit-switcher button:hover {
-  background-color: #DDA0DD;
+  background-color: #b427d3;
   transform: scale(1.05);
 }
 
@@ -174,7 +181,7 @@ main {
 }
 
 #weather-info {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 229, 229, 0.9);
   padding: 25px;
   border-radius: 10px;
   text-align: center;
@@ -211,8 +218,8 @@ main {
 }
 
 #capital-button {
-  background-color: #e165e1; /* Фиолетовый, как #settings-button */
-  color: white;
+  background-color: #E0B0FF; /* Light purple */
+  color: white; 
   padding: 10px 15px; /* Увеличенный внутренний отступ */
   border: none;
   border-radius: 5px;
@@ -223,7 +230,7 @@ main {
 }
 
 #capital-button:hover {
-  background-color: #b427d3; /* Более темный фиолетовый при наведении */
+  background-color: #9370DB; /* Более темный фиолетовый при наведении */
   transform: translateY(-2px); /* Поднимается при наведении */
 }
 
@@ -243,8 +250,8 @@ main {
 }
 
 #settings-button {
-  background-color: #e165e1;
-  color: white;
+  background-color: #9370DB;
+  color: white; 
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -333,9 +340,9 @@ main {
 }
 
 #toggle-details {
-  background-color: #f4425d;
+  background-color: #E0B0FF; /* Light purple */
+  color: white; 
   border: none;
-  color: white;
   padding: 10px 20px;
   margin-bottom: 20px;
   text-align: center;
@@ -349,24 +356,35 @@ main {
 }
 
 #toggle-details:hover {
-  background-color: #af4daf;
+  background-color: #9370DB;
   transform: scale(1.05);
 }
 
 #close-settings {
-  background-color: #f44336;
+  background-color: #E0B0FF; /* Light purple */
   color: white;
-  padding: 8px 16px;
+  padding: 10px 15px; /* Slightly larger padding */
   border: none;
-  border-radius: 5px;
+  border-radius: 50%; /* Make it a circle */
   cursor: pointer;
   margin-top: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 18px; /* Larger font size for the X */
+  font-weight: bold;
+  position: absolute; /* Position it relative to the settings menu */
+  top: 10px; /* Adjust distance from the top */
+  right: 10px;
 }
 
 #close-settings:hover {
-  background-color: #d32f2f;
+  background-color: #9370DB; /* Darker purple on hover */
+  transform: scale(1.1); /* Scale up slightly on hover */
 }
+
+#close-settings::before {
+  content: "✕"; /* Unicode character for a fancy X */
+}
+
 
 .hidden {
   display: none;

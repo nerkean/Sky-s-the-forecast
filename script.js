@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
             moreDetails: "Подробнее",
             settings: "⚙️ Настройки",
             hideDetails: "Скрыть",
-            closeSettings: "Закрыть",
                         feelsLike: "Ощущается как:",
             capitalButton: "Столицы",
             settingsHeader: "Настройки",  // Добавлено: заголовок настроек
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
             moreDetails: "Більше деталів", 
             settings: "⚙️ Налаштування", 
             hideDetails: "Приховати деталі",
-            closeSettings: "Закрити",
                         feelsLike: "Відчувається як:",
             capitalButton: "Столиці",
             settingsHeader: "Налаштування", // Added: Settings header
@@ -53,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
             moreDetails: "More Details", 
             settings: "⚙️ Settings", 
             hideDetails: "Hide Details",
-            closeSettings: "Close",
             settingsHeader: "Settings", // Added: Settings header
             enableGeo: "Enable Geolocation", // Added: Geolocation option
                         feelsLike: "Feels like:",
